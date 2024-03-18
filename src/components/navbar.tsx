@@ -7,7 +7,7 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet"
 
 export const Navbar = () => {
     return (
-        <nav className="w-full flex items-center justify-between bg-primary text-white py-4 px-16">
+        <nav className="sticky top-0 w-full flex items-center justify-between bg-primary text-white py-4 px-16">
             <div className="flex items-center justify-center">
                 <img src="src/assets/cryptocoffee-logo.png" className="h-8 -mt-2" alt="" />
                 <p>CryptoCoffee</p>
