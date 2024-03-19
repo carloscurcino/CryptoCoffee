@@ -17,11 +17,9 @@ export const Navbar = () => {
                 <NavigationMenu>
                     <NavigationMenuList className="flex gap-16 items-center">
                         <NavigationMenuItem>
-                            <a href="#">
-                                <NavigationMenuLink>
-                                    Trade
-                                </NavigationMenuLink>
-                            </a>
+                            <NavigationMenuLink href="#">
+                                Trade
+                            </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuTrigger className="bg-none">Learn</NavigationMenuTrigger>
@@ -36,18 +34,14 @@ export const Navbar = () => {
                             </NavigationMenuContent>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <a href="#">
-                                <NavigationMenuLink className="flex items-center justify-center gap-2">
-                                    Earn
-                                </NavigationMenuLink>
-                            </a>
+                            <NavigationMenuLink href="#" className="flex items-center justify-center gap-2">
+                                Earn
+                            </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <a href="#">
-                                <NavigationMenuLink className="flex items-center justify-center gap-2">
-                                    Buy Crypto <SquareArrowUpRight />
-                                </NavigationMenuLink>
-                            </a>
+                            <NavigationMenuLink href="#" className="flex items-center justify-center gap-2">
+                                Buy Crypto <SquareArrowUpRight />
+                            </NavigationMenuLink>
                         </NavigationMenuItem>
                     </NavigationMenuList>
                 </NavigationMenu>
@@ -68,13 +62,11 @@ export const Navbar = () => {
                         <NavigationMenu>
                             <NavigationMenuList className="flex flex-col gap-16 items-center">
                                 <NavigationMenuItem>
-                                    <a href="#">
-                                        <SheetClose asChild>
-                                            <NavigationMenuLink>
-                                                Trade
-                                            </NavigationMenuLink>
-                                        </SheetClose>
-                                    </a>
+                                    <SheetClose asChild>
+                                        <NavigationMenuLink href="#">
+                                            Trade
+                                        </NavigationMenuLink>
+                                    </SheetClose>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-none p-0">Learn</NavigationMenuTrigger>
@@ -109,22 +101,18 @@ export const Navbar = () => {
                                     </NavigationMenuContent>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <a href="#">
-                                        <SheetClose asChild>
-                                            <NavigationMenuLink className="flex items-center justify-center gap-2">
-                                                Earn
-                                            </NavigationMenuLink>
-                                        </SheetClose>
-                                    </a>
+                                    <SheetClose asChild>
+                                        <NavigationMenuLink href="#" className="flex items-center justify-center gap-2">
+                                            Earn
+                                        </NavigationMenuLink>
+                                    </SheetClose>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <a href="#">
-                                        <SheetClose asChild>
-                                            <NavigationMenuLink className="flex items-center justify-center gap-2">
-                                                Buy Crypto <SquareArrowUpRight />
-                                            </NavigationMenuLink>
-                                        </SheetClose>
-                                    </a>
+                                    <SheetClose asChild>
+                                        <NavigationMenuLink href="#" className="flex items-center justify-center gap-2">
+                                            Buy Crypto <SquareArrowUpRight />
+                                        </NavigationMenuLink>
+                                    </SheetClose>
                                 </NavigationMenuItem>
                             </NavigationMenuList>
                         </NavigationMenu>
