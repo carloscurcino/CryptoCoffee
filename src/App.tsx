@@ -141,21 +141,41 @@ function App() {
               <TableRow key={index}>
                 <TableCell className="w-[100px] font-medium"><Heart /></TableCell>
                 <TableCell className="flex items-center gap-1 font-medium">
-                  <img
-                    className='h-8'
-                    src={coin.image}
-                    alt={`${coin.name} image`}
-                  />
-                  {coin.name}
+                  <a className='flex items-center gap-1 font-medium w-full' href={`/coins/${coin.id}`}>
+                    <img
+                      className='h-8'
+                      src={coin.image}
+                      alt={`${coin.name} image`}
+                    />
+                    {coin.name}
+                  </a>
                 </TableCell>
-                <TableCell>{coin.symbol}</TableCell>
-                <TableCell>{formatNumber('currency', 'narrowSymbol').format(coin.current_price)}</TableCell>
+                <TableCell>
+                  <a className='flex items-center gap-1 font-medium w-full' href={`/coins/${coin.id}`}>
+                    {coin.symbol}
+                  </a>
+                </TableCell>
+                <TableCell>
+                  <a className='flex items-center gap-1 font-medium w-full' href={`/coins/${coin.id}`}>
+                    {formatNumber('currency', 'narrowSymbol').format(coin.current_price)}
+                  </a>
+                </TableCell>
                 <TableCell className={`flex ${coin.price_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'}`}>
-                  {coin.price_change_percentage_24h >= 0 ? <ChevronUp /> : <ChevronDown />}
-                  {formatNumber('percent', 'narrowSymbol').format(coin.price_change_percentage_24h / 100)}
+                  <a className='flex items-center gap-1 font-medium w-full' href={`/coins/${coin.id}`}>
+                    {coin.price_change_percentage_24h >= 0 ? <ChevronUp /> : <ChevronDown />}
+                    {formatNumber('percent', 'narrowSymbol').format(coin.price_change_percentage_24h / 100)}
+                  </a>
                 </TableCell>
-                <TableCell>{formatNumber('currency', 'narrowSymbol').format(coin.total_volume)}</TableCell>
-                <TableCell className="text-right">{formatNumber('currency', 'narrowSymbol').format(coin.market_cap)}</TableCell>
+                <TableCell>
+                  <a className='flex items-center gap-1 font-medium w-full' href={`/coins/${coin.id}`}>
+                    {formatNumber('currency', 'narrowSymbol').format(coin.total_volume)}
+                  </a>
+                </TableCell>
+                <TableCell className="text-right">
+                  <a className='flex items-end justify-end gap-1 font-medium w-full' href={`/coins/${coin.id}`}>
+                    {formatNumber('currency', 'narrowSymbol').format(coin.market_cap)}
+                  </a>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
