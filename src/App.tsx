@@ -8,7 +8,7 @@ import { CoinInterface } from './interfaces/coinsInterface'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/ui/tooltip'
 import { formatNumber } from './services/formatNumber'
 import { TrendingCoinInterface } from './interfaces/trendingcoininterface'
-import { addFavorite } from "./redux/favorite/slice"
+import { addOrRemoveFavorite } from "./redux/favorite/slice"
 import { useAppDispatch, useAppSelector } from './redux/hooks'
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
   }, [favoriteCoins])
 
   const handleAddToFavorite = (coin: CoinInterface) => {
-    dispatch(addFavorite(coin))
+    dispatch(addOrRemoveFavorite(coin))
   }
 
   return (
@@ -170,7 +170,7 @@ function App() {
             {coinsByMarket && coinsByMarket.map((coin, index) => (
               <TableRow key={index}>
                 <TableCell className="w-[100px] font-medium">
-                  <Heart className='cursor-pointer' onClick={() => handleAddToFavorite(coin)} />
+                  <Heart className={`cursor-pointer ${favoriteCoins.find((favoriteCoin) => favoriteCoin.id === coin.id) && 'fill-light_red text-light_red'}`} onClick={() => handleAddToFavorite(coin)} />
                 </TableCell>
                 <TableCell className="flex items-center gap-1 font-medium">
                   <a className='flex items-center gap-1 font-medium w-full' href={`/coins/${coin.id}`}>
