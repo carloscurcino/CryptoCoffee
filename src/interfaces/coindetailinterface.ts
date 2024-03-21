@@ -17,5 +17,7 @@ export interface CoinDetailInterface {
         circulating_supply: number;
         total_supply: number;
         max_supply: number;
+        high_24h: { usd: number }
+        low_24h: { usd: number }
     }
 }

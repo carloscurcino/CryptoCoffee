@@ -14,6 +14,7 @@ const CoinDetails = () => {
     const [chartType, setChartType] = useState<'price' | 'market'>('price');
     const [chartData, setChartData] = useState();
     const [coinData, setCoinData] = useState<CoinDetailInterface>();
+    const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
     useEffect(() => {
         if (id) {
@@ -47,8 +48,18 @@ const CoinDetails = () => {
                         </span>
                         <span className="rounded-xl bg-dark py-0.5 px-1">24h</span></p>
                 </div>
-                <Button className="flex items-center bg-secondary hover:bg-light_blue text-xl font-bold py-6"><Heart size={28} />Add to Favorites</Button>
-                <div className="flex flex-col items-center justify-center gap-7">
+                <Button onClick={() => setIsFavorite(!isFavorite)} className="flex items-center bg-secondary hover:bg-light_blue text-xl font-bold py-6">
+                    <Heart size={28} className={`${isFavorite ? 'fill-light_red text-light_red' : 'fill-none'}`} />Add to Favorites
+                </Button>
+                <div className="flex flex-col items-center justify-center gap-4">
+                    <p className="w-full flex items-center justify-between text-sm">
+                        <span>High price 24h</span>
+                        <span>{formatNumber('currency', 'narrowSymbol').format(coinData.market_data.high_24h.usd)}</span>
+                    </p>
+                    <p className="w-full flex items-center justify-between text-sm">
+                        <span>Low price 24</span>
+                        <span>{formatNumber('currency', 'narrowSymbol').format(coinData.market_data.low_24h.usd)}</span>
+                    </p>
                     <p className="w-full flex items-center justify-between text-sm">
                         <span>Market Cap</span>
                         <span>{formatNumber('currency', 'narrowSymbol').format(coinData.market_data.market_cap.usd)}</span>
