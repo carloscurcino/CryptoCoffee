@@ -8,21 +8,18 @@ import { CoinInterface } from './interfaces/coinsInterface'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './components/ui/tooltip'
 import { formatNumber } from './services/formatNumber'
 import { TrendingCoinInterface } from './interfaces/trendingcoininterface'
-import { useDispatch } from 'react-redux'
-import { addToFavoriteCoin } from "./redux/favorite/slice"
-import { useSelector } from 'react-redux'
+import { addFavorite } from "./redux/favorite/slice"
+import { useAppDispatch, useAppSelector } from './redux/hooks'
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const [coinsByMarket, setCoinsByMarket] = useState<CoinInterface[]>([])
   const [topGainers, setTopGainers] = useState<CoinInterface[]>([])
   const [trendingCoins, setTrendingCoins] = useState<TrendingCoinInterface[]>([])
-  // const [favorites, setFavorites] = useState<CoinInterface[]>(useSelector((state) => state.favorite))
-  const favorites: CoinInterface[] = useSelector((state) => state.favorite)
+  const [favorites, setFavorites] = useState<CoinInterface[]>([])
+  const { favoriteCoins } = useAppSelector((state) => state.favorite)
 
   useEffect(() => {
-    console.log(favorites)
-
     coinService.getAllByMarket("usd").then((coins) => {
       setCoinsByMarket(coins?.data.slice(0, 10))
     }).catch((err) => console.error(err));
@@ -36,10 +33,14 @@ function App() {
     }).catch((err) => console.error(err));
   }, [])
 
+  useEffect(() => {
+    if (favoriteCoins) {
+      setFavorites(favoriteCoins.slice(0, 3))
+    }
+  }, [favoriteCoins])
+
   const handleAddToFavorite = (coin: CoinInterface) => {
-    console.log("dadaa")
-    dispatch(addToFavoriteCoin(coin))
-    console.log(favorites)
+    dispatch(addFavorite(coin))
   }
 
   return (

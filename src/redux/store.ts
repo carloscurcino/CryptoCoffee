@@ -1,25 +1,31 @@
 
-import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
-import { favoriteReducer } from './favorite/slice';
-import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-
-const rootReducer = combineReducers({
-    favoriteCoins: favoriteReducer,
-});
+import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
+import favoriteReducer from './favorite/slice';
+import storage from "redux-persist/lib/storage"
+import { persistReducer } from "redux-persist"
+import { combineReducers } from '@reduxjs/toolkit';
 
 const persistConfig = {
-    key: 'root',
-    storage,
-};
+    key: "root",
+    version: 1,
+    storage
+}
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const reducer = combineReducers({
+    favorite: favoriteReducer,
+})
 
-const store = configureStore({
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+export const store = configureStore({
     reducer: persistedReducer,
 });
 
-const persistor = persistStore(store);
-
-export { store, persistor };
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+    ReturnType,
+    RootState,
+    unknown,
+    Action<string>
+>
