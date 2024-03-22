@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+# CryptoCoffee
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição
 
-Currently, two official plugins are available:
+CryptoCoffee é uma aplicação feita para processo seletivo que simula uma plataforma cruzada para negociação de criptomoedas e educação financeira. Permite aos usuários acompanhar as criptomoedas, com dados aprofundados e conexão com wallet.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Link para live teste https:
 
-## Expanding the ESLint configuration
+## Instalação
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Siga os passos abaixo para instalar e executar a aplicação:
 
-- Configure the top-level `parserOptions` property like this:
+1. **Clonar o repositório:**
+   ```
+   git clone https://github.com/seu-usuario/cryptocoffee.git
+   ```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+2. **Instalar dependências:**
+   ```
+   cd cryptocoffee
+   npm install
+   ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. **Executar a aplicação:**
+   ```
+   npm run dev
+   ```
+
+## Funcionalidades
+
+### 1. Negociação de Criptomoedas
+- Permite aos usuários realizar negociações de diferentes criptomoedas.
+- Fornece informações detalhadas sobre cada criptomoeda, incluindo preço atual, variação de preço, volume de negociação e muito mais.
+
+### 2. Aprendizado
+- Oferece recursos educacionais sobre criptomoedas, incluindo artigos, vídeos, podcasts e newsletters.
+- Ajuda os usuários a entenderem os conceitos básicos das criptomoedas e como começar a investir com segurança.
+
+### 3. Notícias e Atualizações
+- Mantém os usuários atualizados com as últimas notícias e atualizações do mundo das criptomoedas.
+- Agrega notícias de várias fontes confiáveis para fornecer uma visão abrangente do mercado.
+
+## Tecnologias Utilizadas
+
+- React.js: Biblioteca JavaScript de código aberto para criar interfaces de usuário.
+- Redux: Biblioteca de gerenciamento de estado para aplicativos JavaScript.
+- Ethereum: Plataforma de blockchain descentralizada para contratos inteligentes e aplicativos descentralizados (dApps).
+- Web3.js: Biblioteca JavaScript para interagir com a blockchain Ethereum.
+
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais detalhes.
