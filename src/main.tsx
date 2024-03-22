@@ -11,6 +11,7 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import Coins from './routes/Coins.tsx'
+import Favorites from './routes/Favorites.tsx'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: '/coins/:id',
     element: <CoinDetails />,
+  },
+  {
+    path: '/favorites',
+    element: <Favorites />
   },
   {
     path: '*',

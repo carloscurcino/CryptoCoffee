@@ -64,6 +64,11 @@ export const Navbar = () => {
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
+                            <NavigationMenuLink href="/favorites" className="flex items-center justify-center gap-2">
+                                Favorites
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
                             <NavigationMenuTrigger className="bg-none">Learn</NavigationMenuTrigger>
                             <NavigationMenuContent>
                                 <ul className="flex flex-col p-4 md:w-[100px] lg:w-[200px] gap-4">
@@ -74,11 +79,6 @@ export const Navbar = () => {
                                     <li><a href="#" className="flex items-center text-center"><Mail /> Newsletter</a></li>
                                 </ul>
                             </NavigationMenuContent>
-                        </NavigationMenuItem>
-                        <NavigationMenuItem>
-                            <NavigationMenuLink href="#" className="flex items-center justify-center gap-2">
-                                Earn
-                            </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuLink href="#" className="flex items-center justify-center gap-2">
