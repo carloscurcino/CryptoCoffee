@@ -56,12 +56,12 @@ const Coins = () => {
                     <SelectContent>
                         <SelectGroup>
                             <SelectLabel>Select filter</SelectLabel>
-                            <SelectItem className='flex flex-row' value="market_cap_desc">Market Cap <ArrowDown className='h-8' /></SelectItem>
-                            <SelectItem className='flex flex-row' value="market_cap_asc">Market Cap <ArrowUp className='h-8' /></SelectItem>
-                            <SelectItem className='flex flex-row' value="volume_desc">Volume <ArrowDown className='h-8' /></SelectItem>
-                            <SelectItem className='flex flex-row' value="volume_asc">Volume <ArrowUp className='h-8' /></SelectItem>
-                            <SelectItem className='flex flex-row' value="id_desc">ID <ArrowDown className='h-8' /></SelectItem>
-                            <SelectItem className='flex flex-row' value="id_asc">ID <ArrowUp className='h-8' /></SelectItem>
+                            <SelectItem className='flex flex-row cursor-pointer' value="market_cap_desc">Market Cap <ArrowDown className='h-8' /></SelectItem>
+                            <SelectItem className='flex flex-row cursor-pointer' value="market_cap_asc">Market Cap <ArrowUp className='h-8' /></SelectItem>
+                            <SelectItem className='flex flex-row cursor-pointer' value="volume_desc">Volume <ArrowDown className='h-8' /></SelectItem>
+                            <SelectItem className='flex flex-row cursor-pointer' value="volume_asc">Volume <ArrowUp className='h-8' /></SelectItem>
+                            <SelectItem className='flex flex-row cursor-pointer' value="id_desc">ID <ArrowDown className='h-8' /></SelectItem>
+                            <SelectItem className='flex flex-row cursor-pointer' value="id_asc">ID <ArrowUp className='h-8' /></SelectItem>
                         </SelectGroup>
                     </SelectContent>
                 </Select>
