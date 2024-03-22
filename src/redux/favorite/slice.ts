@@ -33,28 +33,16 @@ const addOrRemovoCoinFavorite = (
     }
 };
 
-const removeCoinFromFavorite = (
-    state: FavoriteState,
-    action: PayloadAction<number>
-) => {
-    const updateFavCoinList = state.favoriteCoins.filter(
-        (coin) => coin.id !== action.payload
-    );
-    state.favoriteCoins = updateFavCoinList;
-};
-
 export const favroitesSlice = createSlice({
     name: "favorites",
     initialState,
     reducers: {
         addOrRemovoCoinFavorite,
-        removeCoinFromFavorite,
     },
 });
 
 export const {
     addOrRemovoCoinFavorite: addOrRemoveFavorite,
-    removeCoinFromFavorite: removeFavorite,
 } = favroitesSlice.actions;
 
 export default favroitesSlice.reducer;
