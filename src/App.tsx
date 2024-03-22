@@ -71,7 +71,9 @@ function App() {
                     src={topCoin.image}
                     alt={`${topCoin.name} image`}
                   />
-                  {topCoin.name}
+                  <span className='block truncate'>
+                    {topCoin.name}
+                  </span>
                 </span>
                 <span className='text-left min-w-[10%]'>{formatNumber('currency', 'narrowSymbol').format(topCoin.current_price)}</span>
                 <span className={`flex items-start text-left ${topCoin.price_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'}`}>
@@ -135,7 +137,9 @@ function App() {
                       src={coin.image}
                       alt={`${coin.name} image`}
                     />
-                    {coin.name}
+                    <span className='block truncate'>
+                      {coin.name}
+                    </span>
                   </span>
                   <span className='text-left min-w-[10%]'>${coin.current_price}</span>
                   <span className={`flex items-start text-left ${coin.price_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'}`}>
