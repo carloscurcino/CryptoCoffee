@@ -19,6 +19,9 @@ const persistedReducer = persistReducer(persistConfig, reducer)
 
 export const store = configureStore({
     reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false,
+    }),
 });
 
 export type AppDispatch = typeof store.dispatch;
