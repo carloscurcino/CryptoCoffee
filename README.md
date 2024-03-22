@@ -46,8 +46,3 @@ Siga os passos abaixo para instalar e executar a aplicação:
 - Redux: Biblioteca de gerenciamento de estado para aplicativos JavaScript.
 - Ethereum: Plataforma de blockchain descentralizada para contratos inteligentes e aplicativos descentralizados (dApps).
 - Web3.js: Biblioteca JavaScript para interagir com a blockchain Ethereum.
-
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais detalhes.
