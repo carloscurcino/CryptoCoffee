@@ -135,7 +135,7 @@ const Coins = () => {
                         <PaginationPrevious className='cursor-pointer' onClick={() => handlePrevPage()} />
                     </PaginationItem>
                     <PaginationItem>
-                        {pageList.map((page, index) => <PaginationLink key={index} className='cursor-pointer' onClick={() => handlePageChange(page)} >{page}</PaginationLink>)}
+                        {pageList.map((pageNum, index) => <PaginationLink key={index} className={`cursor-pointer ${page === pageNum && 'bg-secondary'}`} onClick={() => handlePageChange(pageNum)} >{pageNum}</PaginationLink>)}
                     </PaginationItem>
                     <PaginationItem>
                         <PaginationEllipsis />
