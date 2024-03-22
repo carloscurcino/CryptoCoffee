@@ -59,8 +59,8 @@ export const Navbar = () => {
                 <NavigationMenu>
                     <NavigationMenuList className="flex gap-16 items-center">
                         <NavigationMenuItem>
-                            <NavigationMenuLink href="#">
-                                Trade
+                            <NavigationMenuLink href="/coins">
+                                Coins
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
@@ -116,8 +116,8 @@ export const Navbar = () => {
                             <NavigationMenuList className="flex flex-col gap-16 items-center">
                                 <NavigationMenuItem>
                                     <SheetClose asChild>
-                                        <NavigationMenuLink href="#">
-                                            Trade
+                                        <NavigationMenuLink href="/coins">
+                                            Coins
                                         </NavigationMenuLink>
                                     </SheetClose>
                                 </NavigationMenuItem>
