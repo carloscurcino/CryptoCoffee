@@ -2,7 +2,7 @@
 
 ## Descrição
 
-CryptoCoffee é uma aplicação feita para processo seletivo que simula uma plataforma cruzada para negociação de criptomoedas e educação financeira. Permite aos usuários acompanhar as criptomoedas, com dados aprofundados e conexão com wallet.
+CryptoCoffee é uma aplicação feita para processo seletivo que simula uma plataforma para negociação de criptomoedas e educação financeira. Permite aos usuários acompanhar as criptomoedas, com dados aprofundados e conexão com wallet.
 
 Link para live teste https://cryptocoffeemarket.vercel.app
 
