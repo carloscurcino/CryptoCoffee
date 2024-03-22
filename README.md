@@ -43,6 +43,7 @@ Siga os passos abaixo para instalar e executar a aplicação:
 ## Tecnologias Utilizadas
 
 - React.js: Biblioteca JavaScript de código aberto para criar interfaces de usuário.
+- React Router DOM: Bilbioteca para roteamento em aplicações React.
 - Redux: Biblioteca de gerenciamento de estado para aplicativos JavaScript.
 - Ethereum: Plataforma de blockchain descentralizada para contratos inteligentes e aplicativos descentralizados (dApps).
 - Web3.js: Biblioteca JavaScript para interagir com a blockchain Ethereum.
