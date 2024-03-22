@@ -122,6 +122,13 @@ export const Navbar = () => {
                                     </SheetClose>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
+                                    <SheetClose asChild>
+                                        <NavigationMenuLink href="/favorites" className="flex items-center justify-center gap-2">
+                                            Favorites
+                                        </NavigationMenuLink>
+                                    </SheetClose>
+                                </NavigationMenuItem>
+                                <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-none p-0">Learn</NavigationMenuTrigger>
                                     <NavigationMenuContent>
                                         <ul className="flex flex-col p-4 md:w-[100px] lg:w-[200px] gap-4">
@@ -152,13 +159,6 @@ export const Navbar = () => {
                                             </li>
                                         </ul>
                                     </NavigationMenuContent>
-                                </NavigationMenuItem>
-                                <NavigationMenuItem>
-                                    <SheetClose asChild>
-                                        <NavigationMenuLink href="#" className="flex items-center justify-center gap-2">
-                                            Earn
-                                        </NavigationMenuLink>
-                                    </SheetClose>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <SheetClose asChild>
