@@ -8,9 +8,14 @@ import coinService from "../services/coins"
 import { formatNumber } from "@/services/formatNumber"
 import { CoinDetailInterface } from "@/interfaces/coindetailinterface"
 import { Skeleton } from "@/components/ui/skeleton"
+import { useAppDispatch, useAppSelector } from "@/redux/hooks"
+import { addOrRemoveFavorite } from "@/redux/favorite/slice"
+import { CoinInterface } from "@/interfaces/coinsInterface"
 
 const CoinDetails = () => {
     const { id } = useParams()
+    const dispatch = useAppDispatch()
+    const { favoriteCoins } = useAppSelector((state) => state.favorite)
     const [chartType, setChartType] = useState<'price' | 'market'>('price');
     const [chartData, setChartData] = useState();
     const [coinData, setCoinData] = useState<CoinDetailInterface>();
@@ -27,6 +32,28 @@ const CoinDetails = () => {
             }).catch((error) => { console.log(error) });
         }
     }, [id])
+
+    useEffect(() => {
+        if (favoriteCoins) {
+            setIsFavorite(favoriteCoins.find((favoriteCoin) => favoriteCoin.id === id) ? true : false);
+        }
+    }, [favoriteCoins, id])
+
+    const handleAddToFavorite = (coinData: CoinDetailInterface) => {
+        const { id, name, image, market_data } = coinData;
+        const coinToAdd: CoinInterface = {
+            id,
+            name,
+            image: image.large, // Assuming you want to use the large image
+            current_price: market_data.current_price.usd,
+            price_change_percentage_24h: market_data.price_change_percentage_24h,
+            symbol: coinData.symbol,
+            market_cap: market_data.market_cap.usd,
+            total_volume: market_data.total_volume.usd,
+            price_change_24h: market_data.price_change_24h
+        };
+        dispatch(addOrRemoveFavorite(coinToAdd))
+    }
 
     return (
         <main className="flex max-md:flex-col items-center justify-center py-16 px-24 h-full gap-28">
@@ -48,7 +75,7 @@ const CoinDetails = () => {
                         </span>
                         <span className="rounded-xl bg-dark py-0.5 px-1">24h</span></p>
                 </div>
-                <Button onClick={() => setIsFavorite(!isFavorite)} className="flex items-center bg-secondary hover:bg-light_blue text-xl font-bold py-6">
+                <Button onClick={() => handleAddToFavorite(coinData)} className="flex items-center bg-secondary hover:bg-light_blue text-xl font-bold py-6">
                     <Heart size={28} className={`${isFavorite ? 'fill-light_red text-light_red' : 'fill-none'}`} />Add to Favorites
                 </Button>
                 <div className="flex flex-col items-center justify-center gap-4">
