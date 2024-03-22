@@ -20,7 +20,6 @@ const router = createBrowserRouter([
   },
   {
     path: '/coins',
-    // element: <Navigate to={'/'} />,
     element: <Coins />
   },
   {
@@ -46,7 +45,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <div className="flex h-screen flex-col">
           <Navbar />
           <div className="flex-1">
-            {/* <App /> */}
             <RouterProvider router={router} />
           </div>
           <Footer />

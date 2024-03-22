@@ -44,7 +44,7 @@ const CoinDetails = () => {
         const coinToAdd: CoinInterface = {
             id,
             name,
-            image: image.large, // Assuming you want to use the large image
+            image: image.large,
             current_price: market_data.current_price.usd,
             price_change_percentage_24h: market_data.price_change_percentage_24h,
             symbol: coinData.symbol,

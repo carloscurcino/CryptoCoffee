@@ -17,7 +17,7 @@ interface Props {
     chartType: 'price' | 'market';
 }
 
-interface CustomTooltipProps extends TooltipProps<ValueType, NameType> { // Definindo a interface CustomTooltipProps
+interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
     type: string;
 }
 

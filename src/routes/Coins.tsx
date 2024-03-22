@@ -22,8 +22,6 @@ const Coins = () => {
         dispatch(addOrRemoveFavorite(coin))
     }
 
-    useEffect(() => { console.log(filter) }, [filter])
-
     useEffect(() => {
         coinService.getAllCoins("usd", page, filter).then((coins) => {
             setCoins(coins?.data)
@@ -38,10 +36,8 @@ const Coins = () => {
     }
 
     const handlePageChange = (page: number) => {
-        // Atualiza a página
         setPage(page);
 
-        // Atualiza a lista de páginas para incluir apenas as páginas até a página selecionada
         setPageList(prevPageList => prevPageList.filter(pageNum => pageNum <= page));
     }
     const handleNextPage = () => {
