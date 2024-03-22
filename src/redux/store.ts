@@ -1,6 +1,7 @@
 
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
 import favoriteReducer from './favorite/slice';
+import walletReducer from './wallet/slice';
 import storage from "redux-persist/lib/storage"
 import { persistReducer } from "redux-persist"
 import { combineReducers } from '@reduxjs/toolkit';
@@ -13,6 +14,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
     favorite: favoriteReducer,
+    wallet: walletReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer)

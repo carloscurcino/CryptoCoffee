@@ -5,31 +5,46 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { NavigationMenuList } from "@radix-ui/react-navigation-menu"
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet"
 import walletService from "@/services/wallet"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ethers } from "ethers"
+import { useAppDispatch, useAppSelector } from "@/redux/hooks"
+import { addWalletAccount, removeWalletAccount } from "@/redux/wallet/slice"
 
 export const Navbar = () => {
+    const dispatch = useAppDispatch()
+    const { wallet } = useAppSelector((state) => state.wallet)
+
     const [walletAccount, setWalletAccount] = useState<string>()
     const [balanceAccount, setBalanceAccount] = useState<string>()
 
+    useEffect(() => {
+        if (wallet) {
+            setWalletAccount(wallet.address)
+            setBalanceAccount(wallet.balance)
+        }
+    }, [wallet])
+
     const handleRequestAccount = () => {
         walletService.connectWallet().then((accounts) => {
-            console.log(accounts)
+
             setWalletAccount(accounts[0]);
-            console.log(walletAccount);
+            const adress = accounts[0]
 
             walletService.getUserBalance(accounts[0]).then((balance: bigint) => {
-                console.log(balance);
+
                 setBalanceAccount(ethers.formatEther(balance));
-                console.log(ethers.formatEther(balance));
+                const walletToAdd = {
+                    address: String(adress),
+                    balance: ethers.formatEther(balance)
+                }
+                dispatch(addWalletAccount(walletToAdd))
             });
         });
     }
 
     const handleDisconnectWallet = async () => {
         walletService.disconnectWallet().then(() => {
-            setWalletAccount(undefined);
-            setBalanceAccount(undefined);
+            dispatch(removeWalletAccount())
         })
     }
 
