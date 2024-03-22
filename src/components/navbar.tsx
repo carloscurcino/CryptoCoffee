@@ -1,11 +1,38 @@
-import { BookOpenText, Mail, Menu, Mic, Newspaper, Settings, SquareArrowUpRight, Wallet, Youtube } from "lucide-react"
+import { BookOpenText, LogOut, Mail, Menu, Mic, Newspaper, Settings, SquareArrowUpRight, Wallet, Youtube } from "lucide-react"
 import { Button } from "./ui/button"
 import { CurrencyEth } from "@phosphor-icons/react"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger } from "./ui/navigation-menu"
 import { NavigationMenuList } from "@radix-ui/react-navigation-menu"
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet"
+import walletService from "@/services/wallet"
+import { useState } from "react"
+import { ethers } from "ethers"
 
 export const Navbar = () => {
+    const [walletAccount, setWalletAccount] = useState<string>()
+    const [balanceAccount, setBalanceAccount] = useState<string>()
+
+    const handleRequestAccount = () => {
+        walletService.connectWallet().then((accounts) => {
+            console.log(accounts)
+            setWalletAccount(accounts[0]);
+            console.log(walletAccount);
+
+            walletService.getUserBalance(accounts[0]).then((balance: bigint) => {
+                console.log(balance);
+                setBalanceAccount(ethers.formatEther(balance));
+                console.log(ethers.formatEther(balance));
+            });
+        });
+    }
+
+    const handleDisconnectWallet = async () => {
+        walletService.disconnectWallet().then(() => {
+            setWalletAccount(undefined);
+            setBalanceAccount(undefined);
+        })
+    }
+
     return (
         <nav className="sticky top-0 z-10 w-full flex items-center justify-between bg-primary text-white py-4 px-16">
             <a href="/" className="flex items-center justify-center">
@@ -47,8 +74,19 @@ export const Navbar = () => {
                 </NavigationMenu>
 
                 <div className="flex items-center gap-4">
-                    <Button className="bg-white hover:bg-slate-200 text-black"><CurrencyEth className="h-8 w-8" size={0} />Ethereum</Button>
-                    <Button className="bg-secondary hover:bg-light_blue rounded-lg"><Wallet className="h-6 w-6 mr-2" />Connect wallet</Button>
+                    {balanceAccount ? (
+                        <p className="flex flex-col items-start justify-start text-left"><span>Balance: </span><span className="flex items-center justify-start text-left"><CurrencyEth className="h-4 w-4" size={0} />{balanceAccount}</span></p>
+                    ) : (
+                        <Button onClick={() => handleRequestAccount()} className="bg-white hover:bg-slate-200 text-black"><CurrencyEth className="h-8 w-8" size={0} />Ethereum</Button>
+                    )}
+                    {walletAccount ? (
+                        <span className="flex gap-4 items-end">
+                            <p className="flex flex-col items-center"><span>Account: </span>{walletAccount.substring(0, 6)}...</p>
+                            <Button onClick={() => handleDisconnectWallet()} className="bg-secondary hover:bg-light_blue flex items-center justify-center text-center gap-1 font-bold">Disconnect<LogOut className="h-4 w-4 font-bold" /></Button>
+                        </span>
+                    ) : (
+                        <Button onClick={() => handleRequestAccount()} className="bg-secondary hover:bg-light_blue rounded-lg"><Wallet className="h-6 w-6 mr-2" />Connect wallet</Button>
+                    )}
                     <Button className="bg-white hover:bg-slate-200 text-black"><Settings /></Button>
                 </div>
             </div>
@@ -118,12 +156,21 @@ export const Navbar = () => {
                         </NavigationMenu>
 
                         <div className="flex flex-col items-center justify-center gap-4">
-                            <SheetClose asChild>
-                                <Button className="bg-white hover:bg-slate-200 text-black"><CurrencyEth className="h-8 w-8" size={0} />Ethereum</Button>
-                            </SheetClose>
-                            <SheetClose asChild>
-                                <Button className="bg-secondary hover:bg-light_blue rounded-lg"><Wallet className="h-6 w-6 mr-2" />Connect wallet</Button>
-                            </SheetClose>
+                            {balanceAccount ? (
+                                <p className="flex flex-col items-start justify-start text-left"><span>Balance: </span><span className="flex items-center justify-start text-left"><CurrencyEth className="h-4 w-4" size={0} />{balanceAccount}</span></p>
+                            ) : (
+                                <SheetClose asChild>
+                                    <Button onClick={() => handleRequestAccount()} className="bg-white hover:bg-slate-200 text-black"><CurrencyEth className="h-8 w-8" size={0} />Ethereum</Button>
+                                </SheetClose>
+                            )}
+                            {walletAccount ? (
+                                <span className="flex flex-col gap-4 items-center">
+                                    <p className="flex flex-col items-center"><span>Account: </span>{walletAccount.substring(0, 6)}...</p>
+                                    <Button onClick={() => handleDisconnectWallet()} className="bg-secondary hover:bg-light_blue flex items-center justify-center text-center gap-1 font-bold">Disconnect<LogOut className="h-4 w-4 font-bold" /></Button>
+                                </span>
+                            ) : (
+                                <Button onClick={() => handleRequestAccount()} className="bg-secondary hover:bg-light_blue rounded-lg"><Wallet className="h-6 w-6 mr-2" />Connect wallet</Button>
+                            )}
                             <SheetClose asChild>
                                 <Button className="bg-white hover:bg-slate-200 text-black"><Settings /></Button>
                             </SheetClose>
