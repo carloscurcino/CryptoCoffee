@@ -6,6 +6,8 @@ CryptoCoffee é uma aplicação feita para um processo seletivo de desenvolvedor
 
 Link para live teste https://cryptocoffeemarket.vercel.app
 
+OBS: Minha chave de API é publica, portanto há um limite de requisições por minuto. Ao fazer muitas ações na página excederá o limite e não fará requisições até o próximo minuto.
+
 ## Instalação
 
 Siga os passos abaixo para instalar e executar a aplicação:
@@ -22,6 +24,8 @@ Siga os passos abaixo para instalar e executar a aplicação:
    ```
 
 3. **Executar a aplicação:**
+   Deixei minha chave de API no .env para que possam testar usando ela. Portanto não é necessário criar chave da API CoinGecko(A não ser que prefira criar uma). Então o próximo passo é apenas rodas e testar
+   
    ```
    npm run dev
    ```
